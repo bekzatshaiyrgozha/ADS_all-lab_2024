@@ -54,5 +54,4 @@ int main() {
     int result = countTriangles(root);
     cout << result << endl;
     
-    return 0;
 }

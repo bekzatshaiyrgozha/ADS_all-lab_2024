@@ -33,9 +33,8 @@ public:
 
         int count = 0;
         if (node->left != nullptr && node->right != nullptr) {
-            count++;  // Мини-треугольник найден
+            count++;  
         }
-        // Рекурсивно ищем мини-треугольники в левом и правом поддеревьях
         count += countMiniTriangles(node->left);
         count += countMiniTriangles(node->right);
 
@@ -57,10 +56,8 @@ int main() {
         tree.root = tree.insert(tree.root, value);
     }
 
-    // Подсчёт мини-треугольников
     int miniTriangles = tree.countMiniTriangles(tree.root);
 
     cout << miniTriangles << endl;
 
-    return 0;
 }

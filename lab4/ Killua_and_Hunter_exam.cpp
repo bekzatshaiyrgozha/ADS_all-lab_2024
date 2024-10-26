@@ -58,5 +58,5 @@ int main() {
     
     cout << diameter << endl;
     
-    return 0;
+    
 }
