@@ -51,8 +51,10 @@ public:
 
     int MinHeap(Node *node)
     {
-        if (node == nullptr)
+        if (node == nullptr){
             return nullptr;
+        }
+
         while (node->left != nullptr)
         {
             node = node->left;

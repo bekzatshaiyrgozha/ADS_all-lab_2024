@@ -70,5 +70,4 @@ int main()
         cout << "Pattern not found.";
     }
 
-    return 0;
 }

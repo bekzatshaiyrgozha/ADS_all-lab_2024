@@ -22,7 +22,7 @@ void merge(vector<int> &arr, int left, int mid, int right)
 
     while (n1 > i && j < n2)
     {
-        if (arrleft[i] > arrright[j])
+        if (arrleft[i] < arrright[j])
         {
             arr[k] = arrleft[i];
             i++;

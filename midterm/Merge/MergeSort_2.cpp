@@ -11,17 +11,17 @@ void merge(vector<int> &arr, int left, int mid, int right)
     vector<int> arr1(n1), arr2(n2);
     for (int i = 0; i < n1; i++)
     {
-        arr1.push_back(arr[i] + i);
+        arr1[i] = arr[left + i];
     }
     for (int i = 0; i < n2; i++)
     {
-        arr2.push_back(mid + 1 + i);
+        arr2[i] = arr[mid + 1 + i];
     }
 
     int i = 0, j = 0, k = left;
-    while (n1 > i && n2 > j)
+    while (i < n1 && j < n2)
     {
-        if (arr1[i] < arr2[j])
+        if (arr1[i] <= arr2[j])
         {
             arr[k] = arr1[i];
             i++;
@@ -33,13 +33,15 @@ void merge(vector<int> &arr, int left, int mid, int right)
         }
         k++;
     }
-    while (n1 > i)
+
+    while (i < n1)
     {
         arr[k] = arr1[i];
         i++;
         k++;
     }
-    while (n2 > j)
+
+    while (j < n2)
     {
         arr[k] = arr2[j];
         j++;
@@ -49,11 +51,13 @@ void merge(vector<int> &arr, int left, int mid, int right)
 
 void mergeSort(vector<int> &arr, int left, int right)
 {
-    int mid = left + (right - left) / 2;
-
-    mergeSort(arr, left, mid);
-    mergeSort(arr, mid + 1, right);
-    merge(arr, left, mid, right);
+    if (left < right)
+    {
+        int mid = left + (right - left) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
 }
 
 int main()
@@ -72,4 +76,5 @@ int main()
     {
         cout << arr[i] << " ";
     }
+
 }
