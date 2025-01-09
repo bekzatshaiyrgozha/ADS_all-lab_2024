@@ -4,6 +4,12 @@
 
 using namespace std;
 
+void addEdge(vector<int<vector<int>> &adj,u,v){
+    adj[u][v] = 1;
+    adj[v][u] = 1;
+}
+
+
 int main()
 {
     int V;

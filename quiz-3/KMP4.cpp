@@ -3,13 +3,13 @@
 
 using namespace std;
 
-vector<int> compute(const string &pattern) // Функция атауы түзетілді
+vector<int> compute(const string &pattern) 
 {
     int m = pattern.size();
     vector<int> prefix(m, 0);
     int j = 0;
 
-    for (int i = 1; i < m; i++) // Индекс 1-ден басталады
+    for (int i = 1; i < m; i++) 
     {
         while (j > 0 && pattern[i] != pattern[j])
         {
@@ -44,7 +44,7 @@ void kmp(const string &text, const string &pattern)
         }
         if (j == m)
         {
-            cout << "index " << i - j + 1 << endl; // Нақты сәйкестік индексі
+            cout << "index " << i - j + 1 << endl;
             j = prefix[j - 1];
         }
     }
