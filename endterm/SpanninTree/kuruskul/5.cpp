@@ -14,11 +14,46 @@ bool compare(const Edge &a, const Edge &b)
 class DSU
 {
 public:
-    vector<Edge> result;
+    vector<Edge> parent,rank;
+
+    DSU(int n){
+        parent.resize(n);
+        rank.resize(n,0);
+
+        for(int i =0;i<n;i++){
+            parent[i] = i;
+        }
+
+        int findSet(int x){
+            if(parent[x]!=x){
+                parent[x] = findSet(parent[x]);
+            }
+            return parent[x];
+        }
+
+        void unionSet(int x,int y){
+            int xroot = findSet(x);
+            int yroot = findSet(y);
+
+            if(xroot == yroot){
+                return;
+            }
+            if(rank[xroot] < rank[yroot]){
+                parent[xroot] = yroot;
+            }else if(rank[xroot] > rank[yroot]){
+                parent[yroot] = xroot;
+            }else{
+                parent[yroot] = xroot
+                rank[xroot]++;
+            }
+        }
+
+
+    }
+
 }
 
-vector<Edge>
-kuriskal(int node, vector<Edge> &edges)
+vector<Edge> kuriskal(int node, vector<Edge> &edges)
 {
     sort(edges.begin(), edges.end(), compare);
 
@@ -27,11 +62,19 @@ kuriskal(int node, vector<Edge> &edges)
 
     for (auto &edge : edges)
     {
+        int u = edge.src;
+        int v = edge.dest;
+
+        if(dsu.findSet(u) != dsu.finSet(v)){
+            result.push_back(edge);
+
+            dsu.unionSet(u,v);
+            if(resul.size() == node-1){
+                return;
+            }
+        }
     }
-    if (dsu.findSet(u) != dsu.findSet(v))
-    {
-        return;
-    }
+    return result;
 }
 
 int main()
